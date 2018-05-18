@@ -1,0 +1,26 @@
+<!-- used to make content dynamic -->
+<!-- example we have a panel component we built -->
+<div class="panel">
+    <div class="panel-heading">
+        <ng-content select=".heading"></ng-content>
+    </div>
+    <div class="panel-body">
+        <ng-content select=".body"></ng-content>
+    </div>
+</div>
+<!-- the content is inserted from app component by the class selector-->
+<bootstrap-panel>
+    <div class="heading">Heading</div>
+    <div class="body">
+        <h2>Body</h2>
+        <p>Some content here...</p>
+    </div>
+</bootstrap-panel>
+<!-- if you don't want the extra divs you can use ng-container -->
+<bootstrap-panel>
+    <ng-container class="heading">Heading</ng-container>
+    <ng-container class="body">
+        <h2>Body</h2>
+        <p>Some content here...</p>
+    </ng-container>
+</bootstrap-panel>
