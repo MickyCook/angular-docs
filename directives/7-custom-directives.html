@@ -1,0 +1,31 @@
+<!-- you can generate a custom directive with: -->
+<!-- command -->
+ng g d directive-name
+<!-- component -->
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
+
+@Directive({
+    selector: '[appInputFormat]'
+});
+export class InputFormatDirective {
+    //1st way
+    @Input('format') format;
+    //2nd way
+    @Input('appInputFormat') format;
+    //to get the value we need to get a reference to the host element
+    //so in our constructor we need to inject an element reference object.
+    //ElementRef gives us access to a DOM object
+    //constructor's should always come before our methods
+    constructor(private el: ElementRef) {}
+    @HostListener('blurr') onBlurr() {
+        let value: string = this.el.nativeElement.value;
+        if (this.format == 'lowercase') {
+            this.el.nativeElement.value = value.toLowerCase();
+        } else {
+            this.el.nativeElement.value = value.toUpperCase();
+        }
+    }
+
+}
+<!-- html two ways, use first if just one property-->
+<input type="text" [appInputFormat]="'uppercase'" [format]="'uppercase'">

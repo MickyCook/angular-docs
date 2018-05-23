@@ -1,0 +1,5 @@
+<!-- when rendering the ui while waiting on data sometimes the value of objs may temp be null
+to fix this we can either use the ngIf directive (ngIf="task.assignee"). or 
+we can use safe traversal operator the ?. 
+-->
+<span>{{ task.assignee?.name }}</span>
